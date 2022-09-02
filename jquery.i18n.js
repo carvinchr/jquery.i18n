@@ -1,18 +1,10 @@
-/*!
- * jQuery i18n Plugin v1.0.0
- * https://github.com/ZOMAKE/jquery.i18n
- *
- * Copyright 2017 ZOMAKE,Inc.
- * Released under the Apache Licence 2.0
- */
-
 (function($) {
     $.fn.extend({
         i18n: function(options) {
             var defaults = {
                 lang: "",
                 defaultLang: "",
-                filePath: "/i18n/",
+                filePath: "i18n/",
                 filePrefix: "i18n_",
                 fileSuffix: "",
                 forever: true,
@@ -78,9 +70,16 @@
                             $(this).attr('placeholder', i18nLang[$(this).attr("i18n")])
                         }
                     }
+                    if ($(this).attr('title') != null && $(this).attr('title') != "") {
+                        if (i18nOnly == null || i18nOnly == undefined || i18nOnly == "" || i18nOnly == "title") {
+                            $(this).prop('title', i18nLang[$(this).attr("i18n")])
+                     
+                        }
+                    }
                 });
                 options.callback();
             });
         }
     });
 })(jQuery);
+
